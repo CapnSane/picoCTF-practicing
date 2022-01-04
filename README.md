@@ -1,0 +1,2 @@
+# picoCTF-practicing
+Practicing picoCTF
