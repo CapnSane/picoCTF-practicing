@@ -1,2 +1,3 @@
 # picoCTF-practicing
-Practicing picoCTF
+
+Repo for practicing picoCTF challenges.
