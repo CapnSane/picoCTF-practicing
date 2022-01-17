@@ -22,17 +22,36 @@ def hash_pw(pw_str):
     m.update(pw_bytes)
     return m.digest()
 
+# with open('dictionary.txt') as f:
+#     pos_pw_list = f.readlines()
+    
+a_file = open("dictionary.txt", "r")
+
+pos_pw_list = []
+
+for line in a_file:
+  stripped_line = line.strip()
+  line_list = stripped_line.split()
+  pos_pw_list.append(line_list)
+
+a_file.close()
+flatlist=[]
+for sublist in pos_pw_list:
+    for element in sublist:
+        flatlist.append(element)
+pos_pw_list = flatlist
+print(pos_pw_list)
 
 def level_5_pw_check():
-    user_pw = input("Please enter correct password for flag: ")
-    user_pw_hash = hash_pw(user_pw)
-    
-    if( user_pw_hash == correct_pw_hash ):
-        print("Welcome back... your flag, user:")
-        decryption = str_xor(flag_enc.decode(), user_pw)
-        print(decryption)
-        return
-    print("That password is incorrect")
+    for i in pos_pw_list:
+        user_pw = i
+        user_pw_hash = hash_pw(user_pw)
+        if( user_pw_hash == correct_pw_hash ):
+            print("Welcome back... your flag, user:")
+            decryption = str_xor(flag_enc.decode(), user_pw)
+            print(decryption)
+            return
+        # print("That password is incorrect")
 
 
 
